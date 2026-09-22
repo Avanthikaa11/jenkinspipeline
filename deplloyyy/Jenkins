@@ -1,0 +1,69 @@
+pipeline {
+    agent any
+ 
+    triggers {
+        cron('H 9 * * 1')
+    }
+ 
+    stages {
+ 
+        stage('Clean') {
+            steps {
+                dir('mule-jenkins-pipeline2') {
+                    bat 'mvn clean'
+                }
+            }
+        }
+ 
+        stage('Test') {
+            steps {
+                dir('mule-jenkins-pipeline2') {
+                    bat 'mvn test'
+                }
+            }
+        }
+ 
+        stage('Verify') {
+            steps {
+                dir('mule-jenkins-pipeline2') {
+                    bat 'mvn verify'
+                }
+            }
+        }
+ 
+        stage('Package') {
+            steps {
+                dir('mule-jenkins-pipeline2') {
+                    bat 'mvn package'
+                }
+            }
+        }
+ 
+        stage('Deploy') {
+            steps {
+                dir('mule-jenkins-pipeline2') {
+                    bat 'mvn deploy -s C:\\Users\\10361686\\.m2\\settings.xml'
+                }
+            }
+        }
+    }
+    post {
+    success {
+        emailext(
+            to: 'avanthikasharma11@gmail.com',
+            subject: "Build Successful",
+            body: "Build Passed"
+        )
+    }
+ 
+    failure {
+        emailext(
+            to: 'avanthikasharma11@gmail.com',
+            subject: "Build Failed",
+            body: "Build Failed"
+        )
+    }
+}
+ 
+}
+ 
