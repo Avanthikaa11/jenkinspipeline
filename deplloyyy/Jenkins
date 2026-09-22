@@ -4,6 +4,7 @@ pipeline {
   environment {
         JAVA_HOME = 'C:\\Program Files\\Zulu\\zulu-17'
         PATH = "${JAVA_HOME}\\bin;${env.PATH}"
+MAVEN_SETTINGS = 'C:\\Users\\10361687\\.m2\\settings.xml'
     }
  
     triggers {
@@ -47,7 +48,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('deplloyyy') {
-                    bat 'mvn deploy -s C:\\Users\\10361687\\.m2\\settings.xml'
+                     bat 'mvn deploy -s "%MAVEN_SETTINGS%"'
                 }
             }
         }
