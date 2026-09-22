@@ -9,7 +9,7 @@ pipeline {
  
         stage('Clean') {
             steps {
-                dir('mule-jenkins-pipeline2') {
+                dir('deplloyyy') {
                     bat 'mvn clean'
                 }
             }
@@ -17,7 +17,7 @@ pipeline {
  
         stage('Test') {
             steps {
-                dir('mule-jenkins-pipeline2') {
+                dir('deplloyyy') {
                     bat 'mvn test'
                 }
             }
@@ -25,7 +25,7 @@ pipeline {
  
         stage('Verify') {
             steps {
-                dir('mule-jenkins-pipeline2') {
+                dir('deplloyyy') {
                     bat 'mvn verify'
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
  
         stage('Package') {
             steps {
-                dir('mule-jenkins-pipeline2') {
+                dir('deplloyyy') {
                     bat 'mvn package'
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
  
         stage('Deploy') {
             steps {
-                dir('mule-jenkins-pipeline2') {
+                dir('deplloyyy') {
                     bat 'mvn deploy -s C:\\Users\\10361687\\.m2\\settings.xml'
                 }
             }
