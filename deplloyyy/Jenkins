@@ -42,7 +42,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('mule-jenkins-pipeline2') {
-                    bat 'mvn deploy -s C:\\Users\\10361686\\.m2\\settings.xml'
+                    bat 'mvn deploy -s C:\\Users\\10361687\\.m2\\settings.xml'
                 }
             }
         }
