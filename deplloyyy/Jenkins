@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+  environment {
+        JAVA_HOME = 'C:\\Program Files\\Zulu\\zulu-17'
+        PATH = "${JAVA_HOME}\\bin;${env.PATH}"
+    }
  
     triggers {
         cron('H 9 * * 1')
